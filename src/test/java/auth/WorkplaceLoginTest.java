@@ -1,13 +1,12 @@
-package com.learning.bookprograms.ch5browserSpecificManipulation;
 
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.learning.helper.BaseTestClass;
-import com.learning.helper.PropertiesReader;
-import com.learning.helper.TOTPGenerator;
+import helper.BaseTestClass;
+import helper.PropertiesReader;
+import totp.TOTPGenerator;
 
 class WorkplaceLoginTest extends BaseTestClass {
 
@@ -31,39 +30,27 @@ class WorkplaceLoginTest extends BaseTestClass {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		
 		driver.get(url);
-		
-		Thread.sleep(3000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(mainPageEmailInput));
 		driver.findElement(mainPageEmailInput).sendKeys(email);;
-		Thread.sleep(3000);
 		driver.findElement(mainNextButton).click();
-//		Thread.sleep(6000);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(emailDialogInput));
 		driver.findElement(emailDialogInput).sendKeys(email);
-		Thread.sleep(2000);
 		driver.findElement(emailNextButton).click();;
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(pwdDialogInput));
 		driver.findElement(pwdDialogInput).sendKeys(password);
-		Thread.sleep(2000);
 		driver.findElement(pwdSignInButton).click();
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(useCodeButton));
-		Thread.sleep(2000);
 		driver.findElement(useCodeButton).click();
-		
 		
 		String totpString = TOTPGenerator.getTotp(secretKey);
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(totpInput));
-		Thread.sleep(2000);
 		driver.findElement(totpInput).sendKeys(totpString);
-		Thread.sleep(2000);
 		
 		driver.findElement(submitTOTPButton).click();
-		
-		Thread.sleep(50000);
 	}
 
 }
