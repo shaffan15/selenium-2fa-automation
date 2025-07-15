@@ -29,18 +29,24 @@ It includes:
 ```
 src/
 ├── main/java/
-│   └── totp/                         # Generates TOTP codes using secret
-│       └── TOTPGenerator.java
+│   ├── totp/                         # Generates TOTP codes using secret
+│   │   └── TOTPGenerator.java
+│   └── helper/
+│       ├── BaseTestClass.java
+│       └── PropertiesReader.java
 ├── test/java/
 │   └── auth/
-│       |── TestWebAuthn.java         # Simulates FIDO2 device
+│       ├── TestWebAuthn.java         # Simulates FIDO2 device
 │       └── WorkplaceLoginTest.java   # Real login to Workplace
+├── test/
+│   └── resources/
+│       └── wp-login.properties
 ```
 
 ## ▶️ How to Run
 
 1. Clone the repository  
-2. Add your secret key & URL in the test file  
+2. Add your secret key & URL in the wp-login.properties file  
 3. Run the test with:
 ```bash
 mvn clean test
@@ -51,7 +57,7 @@ mvn clean test
 ## 📌 Notes
 
 - The `HasVirtualAuthenticator` API is supported only in **Selenium 4.10+**
-- Set your email, password, and 2FA secret inside WorkplaceLoginTest.java for the test to work correctly.
+- Set your email, password, url and 2FA secret inside **wp-login.properties** for the test to work correctly.
 - This repo is for **educational and demonstration purposes only**. Never misuse security automation on protected systems.
 
 ---
