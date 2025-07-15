@@ -6,6 +6,10 @@ It leverages:
 - `HasVirtualAuthenticator` from Selenium WebDriver for simulating USB key/fingerprint-based FIDO2 devices.
 - `GoogleAuthenticator` (`com.warrenstrange:googleauth:1.4.0`) for generating time-based one-time passwords (TOTP) from shared secret keys.
 
+It includes:
+- A **virtual authenticator test** that simulates USB-based FIDO2 login using Selenium’s `HasVirtualAuthenticator` interface.
+- A real-world **login test to Workplace by Meta using sample credentials and dynamic **TOTP code generation** via `GoogleAuthenticator` library.
+
 ## 🎯 Key Features
 
 - Emulates **FIDO2/WebAuthn** USB authentication via virtual authenticator.
@@ -15,21 +19,22 @@ It leverages:
 ## 🧩 Tech Stack
 
 - Java 11+
+- Maven
 - Selenium WebDriver 4.10+
 - Google Authenticator Java library
 - JUnit 4 / TestNG (your choice)
-- ChromeDriver
 
 ## 🗂️ Structure
 
 ```
 src/
 ├── main/java/
-│   └── totp/                       # Generates TOTP codes using secret
+│   └── totp/                         # Generates TOTP codes using secret
 │       └── TOTPGenerator.java
 ├── test/java/
 │   └── auth/
-│       └── VirtualAuthenticatorLoginTest.java
+│       |── TestWebAuthn.java         # Simulates FIDO2 device
+│       └── WorkplaceLoginTest.java   # Real login to Workplace
 ```
 
 ## ▶️ How to Run
@@ -46,6 +51,7 @@ mvn clean test
 ## 📌 Notes
 
 - The `HasVirtualAuthenticator` API is supported only in **Selenium 4.10+**
+- Set your email, password, and 2FA secret inside WorkplaceLoginTest.java for the test to work correctly.
 - This repo is for **educational and demonstration purposes only**. Never misuse security automation on protected systems.
 
 ---
