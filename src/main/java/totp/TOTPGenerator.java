@@ -1,4 +1,3 @@
-package com.learning.helper;
 
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 
