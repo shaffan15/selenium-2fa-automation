@@ -1,3 +1,4 @@
+package totp;
 
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 
