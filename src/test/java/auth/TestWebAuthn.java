@@ -1,4 +1,4 @@
-package com.learning.bookprograms.ch5browserSpecificManipulation;
+package auth;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import org.openqa.selenium.virtualauthenticator.HasVirtualAuthenticator;
 import org.openqa.selenium.virtualauthenticator.VirtualAuthenticator;
 import org.openqa.selenium.virtualauthenticator.VirtualAuthenticatorOptions;
 
-import com.learning.helper.BaseTestClass;
+import helper.BaseTestClass;
 
 class TestWebAuthn extends BaseTestClass {
 
